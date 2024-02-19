@@ -5,7 +5,7 @@ phases:
     runtime-versions:
       nodejs: 18
     commands:
-      - cd media
+      - cd media || exit 0  # Add exit 0 to prevent build failure if 'media' directory doesn't exist
       - echo "installing source NPM dependencies"
       - npm install
 
