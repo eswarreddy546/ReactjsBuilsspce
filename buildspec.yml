@@ -3,23 +3,20 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14
+      nodejs: 18
+  pre_build:
     commands:
-      # Upgrade Yarn to the latest version
-      - npm install -g yarn@latest
-      # Install project dependencies
-      - yarn install --frozen-lockfile
+      - cd MEDIA
+      - echo Installing source NPM dependencies...
+      - npm install
   build:
     commands:
-      # Run build script
-      - yarn run build
+      - echo Build started on 'date'
+      - npm run build
 
 artifacts:
-  # Include all files required to run application
-  # Notably excluded is node_modules, as this will cause overwrite error on deploy
   files:
-    - public/**/*
-    - src/**/*
-    - package.json
-    - appspec.yml
-    - scripts/**/*
+    - '**/*'
+    #- "MEDIA/build/**/*"
+  base-directory: 'MEDIA/build'
+  #discard-paths: yes
