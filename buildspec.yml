@@ -3,17 +3,17 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14   # Change the Node.js version to 14 (matches the available versions)
+      nodejs: 14
     commands:
-        # Ensure Yarn is installed
-        - npm install -g yarn
-        # Install project dependencies using Yarn
-        - yarn install
+      # Upgrade Yarn to the latest version
+      - npm install -g yarn@latest
+      # Install project dependencies
+      - yarn install --frozen-lockfile
   build:
     commands:
-        # Run build script
-        - yarn run build
-     
+      # Run build script
+      - yarn run build
+
 artifacts:
   # Include all files required to run application
   # Notably excluded is node_modules, as this will cause overwrite error on deploy
