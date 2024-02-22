@@ -3,38 +3,23 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 12
+      nodejs: 18
+   
     commands:
-      # Install Node.js 12
-      - echo "Installing Node.js 12..."
-      - curl -sL https://deb.nodesource.com/setup_12.x | bash -
-      - apt-get install -y nodejs
-      # Install Yarn
-      - echo "Installing Yarn..."
-      - npm install -g yarn
-  pre_build:
-    commands:
-      # Print Yarn version
-      - echo "Yarn version:"
-      - yarn --version
-      # Print Node.js version
-      - echo "Node.js version:"
-      - node --version
-      # Install project dependencies
-      - echo "Installing project dependencies..."
-      - yarn install --verbose --check-files --network-timeout 1000000
+        # install npm
+        - npm install
+       
   build:
     commands:
-      # Build React application
-      - echo "Building React application..."
-      - yarn build
-  post_build:
-    commands:
-      # Print build output directory contents
-      - echo "Build output directory contents:"
-      - ls -al build/
-
+        # run build script
+        - npm run build
+     
 artifacts:
+  # include all files required to run application
+  # notably excluded is node_modules, as this will cause overwrite error on deploy
   files:
-    - '**/*'
-  base-directory: build
+    - public/**/*
+    - src/**/*
+    - package.json
+    - appspec.yml
+    - scripts/**/*
