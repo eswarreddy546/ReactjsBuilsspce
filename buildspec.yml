@@ -6,10 +6,10 @@ phases:
       nodejs: 14
   pre_build:
     commands:
-      - echo "Current directory contents:"
-      - ls -al
-      - cd media
-      - echo "Changed directory to media"
+      - pwd  # Print current working directory for debugging
+      - ls -al  # List contents of current directory for debugging
+      - cd media || exit 1  # Change directory to 'media' or exit with error code 1 if unsuccessful
+      - ls -al  # List contents of 'media' directory for debugging
       - echo "Installing source NPM dependencies..."
       - npm install
   build:
