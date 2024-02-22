@@ -4,17 +4,17 @@ phases:
   install:
     runtime-versions:
       nodejs: 14
+    commands:
+      - npm install -g yarn
+
   pre_build:
     commands:
-      - pwd  # Print current working directory for debugging
-      - ls -al  # List contents of current directory for debugging
-      - cd media || exit 1  # Change directory to 'media' or exit with error code 1 if unsuccessful
-      - ls -al  # List contents of 'media' directory for debugging
-      - echo "Installing source NPM dependencies..."
+      - cd media || exit 1
       - npm install
+
   build:
     commands:
-      - echo Build started on 'date'
+      - echo "Build started on $(date)"
       - npm run build
 
 artifacts:
