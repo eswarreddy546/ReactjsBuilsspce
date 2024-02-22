@@ -3,20 +3,20 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 18
-   
+      nodejs: 14   # Change the Node.js version to 14 (matches the available versions)
     commands:
-        # install npm
-        - npm install
-       
+        # Ensure Yarn is installed
+        - npm install -g yarn
+        # Install project dependencies using Yarn
+        - yarn install
   build:
     commands:
-        # run build script
-        - npm run build
+        # Run build script
+        - yarn run build
      
 artifacts:
-  # include all files required to run application
-  # notably excluded is node_modules, as this will cause overwrite error on deploy
+  # Include all files required to run application
+  # Notably excluded is node_modules, as this will cause overwrite error on deploy
   files:
     - public/**/*
     - src/**/*
