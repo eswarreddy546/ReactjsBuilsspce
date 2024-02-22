@@ -6,7 +6,7 @@ phases:
       nodejs: 14
   pre_build:
     commands:
-      - cd MEDIA
+      - cd media
       - echo Installing source NPM dependencies...
       - npm install
   build:
@@ -18,5 +18,5 @@ artifacts:
   files:
     - '**/*'
     #- "MEDIA/build/**/*"
-  base-directory: 'MEDIA/build'
+  base-directory: 'media/build'
   #discard-paths: yes
