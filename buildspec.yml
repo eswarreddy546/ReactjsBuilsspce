@@ -22,7 +22,7 @@ phases:
       - node --version
       # Install project dependencies
       - echo "Installing project dependencies..."
-      - yarn install --silent --frozen-lockfile
+      - yarn install --verbose --check-files --network-timeout 1000000
   build:
     commands:
       # Build React application
