@@ -22,7 +22,7 @@ phases:
       - node --version
       # Install project dependencies
       - echo "Installing project dependencies..."
-      - yarn install --frozen-lockfile
+      - yarn install --silent --frozen-lockfile
   build:
     commands:
       # Build React application
