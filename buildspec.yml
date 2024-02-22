@@ -3,21 +3,19 @@ version: 0.2
 phases:
   install:
     runtime-versions:
-      nodejs: 14
+      nodejs: 14   # Specify Node.js runtime version
     commands:
-      - npm install -g yarn
+      - npm install -g yarn  # Install Yarn globally
 
   pre_build:
     commands:
-      - cd media || exit 1
-      - npm install
+      - yarn install  # Install project dependencies using Yarn
 
   build:
     commands:
-      - echo "Build started on $(date)"
-      - npm run build
+      - yarn build  # Run the build script to build the React application
 
 artifacts:
   files:
-    - '**/*'
-  base-directory: 'media/build'
+    - '**/*'  # Include all files in the build artifacts
+  base-directory: 'build'  # Set the base directory for artifacts to the build output directory
