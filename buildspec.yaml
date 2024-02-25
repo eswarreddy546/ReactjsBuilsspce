@@ -1,10 +1,9 @@
-
 version: 0.2
 
 phases:
   install:
     runtime-versions:
-      nodejs: 18
+      nodejs: 14
    
     commands:
         # install npm
@@ -22,4 +21,3 @@ artifacts:
     - public/**/*
     - src/**/*
     - package.json
-    
